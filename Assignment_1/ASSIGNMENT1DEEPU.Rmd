@@ -1,0 +1,52 @@
+---
+title: "Assignment1"
+author: "deepak"
+date: "2023-09-11"
+output: html_document
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+##DOWNLOADED THE DATASET https://www.kaggle.com/datasets/smitisinghal/wholesale-customers-data
+```{r}
+##imported the dataset 
+Wholesale_data <- read.csv("C:/Users/durga/OneDrive/Desktop/data.csv", header = TRUE, sep = "," )
+
+##DESCRIPTIVE STATISTICS
+head (Wholesale_data)
+summary (Wholesale_data)
+
+##DESCRIPTIVE STATISTICS FOR QUANTITATIVE VARIABLES
+quantitative_variables = c("Milk" , "Grocery")
+summary_variables = summary(Wholesale_data[quantitative_variables])
+print(summary_variables)
+
+##transformation
+Transformation = Wholesale_data$Milk/100
+summary(Transformation)
+
+##Bar Plot
+x=table(Wholesale_data$Region)
+print(x)
+
+barplot.default(x,names.arg = c("Region", "Milk", "Grocery"),
+xlab = "Region", ylab = "milk",
+col = "Red", main = "Barplot")
+
+##Scatter Plot
+##Scatter plot for milk consumption based on Region
+plot(x = Wholesale_data$Milk, y = Wholesale_data$Region,
+xlab = "Milk",
+ylab = "Region",
+xlim = c(0,3000),
+ylim = c(0, 5000),
+main = "Scatterplot"
+)
+
+
+
+```
